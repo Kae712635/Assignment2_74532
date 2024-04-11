@@ -1,5 +1,3 @@
-md
-
 # My informations
 
 **Name:** Choblet Klervi
