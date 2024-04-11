@@ -30,6 +30,7 @@ package com.stu74532.assignment2_74532
     import androidx.compose.ui.graphics.painter.Painter
     import androidx.compose.ui.res.painterResource
     import androidx.compose.ui.text.TextStyle
+    import androidx.compose.ui.text.font.FontFamily
     import androidx.compose.ui.text.font.FontWeight
     import androidx.compose.ui.text.style.TextAlign
     import androidx.compose.ui.unit.dp
