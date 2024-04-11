@@ -18,7 +18,6 @@ import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -28,7 +27,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.compose.ui.graphics.Color
@@ -116,86 +114,173 @@ fun ScreenHome(navController: NavController) {
                             imageId = R.drawable.oppenheimer2,
                             contentDescription = "Oppenheimer",
                             onClick = {
-                                val value = Routes.OppenheimerScreen.withArgs("0")
+                                val value = Routes.OppenheimerScreen.withArgs(0)
+                                navController.navigate(value)
+                            }
+                        )
+                        seat(id = 0)
+                    }
+
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Column (
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ){
+                        ImageWithNavigation(
+                            imageId = R.drawable.madameweb,
+                            contentDescription = "Madame Web",
+                            onClick = {
+                                val value = Routes.OppenheimerScreen.withArgs(1)
                                 navController.navigate(value)
                             }
                         )
 
-                        if(listMovie[0].seatsSelected != 0){
-                            Box(modifier = Modifier.background(Color.White))
-                            {
-                                Text(text = "Seat Selected = " + listMovie[0].seatsSelected,
-                                    fontSize= 12.sp,
-                                    color = Color.Black,
-                                )
-                            }
-
-                        }
-                        else{
-                            Box (modifier = Modifier.background(Color.Cyan)){
-                                Text(text = "Seat Remaining = " + listMovie[0].seatsRemaining,
-                                    fontSize= 12.sp,
-                                    color = Color.Black
-                                )
-                            }
-                        }
+                        seat(id = 1)
                     }
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Column (
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ){
+                        ImageWithNavigation(
+                            imageId = R.drawable.le_dernier_jaguar,
+                            contentDescription = "Th Last Jaguar",
+                            onClick = {
+                                val value = Routes.OppenheimerScreen.withArgs(2)
+                                navController.navigate(value)
+                            }
+                        )
 
-                    Spacer(modifier = Modifier.width(16.dp))
-                    Image(
-                        painter = painterResource(id = R.drawable.madameweb),
-                        contentDescription = "Madame Web"
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
-                    Image(
-                        painter = painterResource(id = R.drawable.le_dernier_jaguar),
-                        contentDescription = "Le Dernier Jaguar"
-                    )
+                        seat(id = 2)
+                    }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 Row {
-                    ImageWithNavigation(
-                        imageId = R.drawable.dune,
-                        contentDescription = "Dune",
-                        onClick = {
-                            navController.navigate(Routes.OppenheimerScreen.route)
-                        }
-                    )
+                    Column (
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ){
+                        ImageWithNavigation(
+                            imageId = R.drawable.dune,
+                            contentDescription = "Dune",
+                            onClick = {
+                                val value = Routes.OppenheimerScreen.withArgs(3)
+                                navController.navigate(value)
+                            }
+                        )
+
+                        seat(id = 3)
+                    }
                     Spacer(modifier = Modifier.width(16.dp))
-                    Image(
-                        painter = painterResource(id = R.drawable.karaoke),
-                        contentDescription = "Karaoke"
-                    )
+                    Column (
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ){
+                        ImageWithNavigation(
+                            imageId = R.drawable.karaoke,
+                            contentDescription = "Karaoke",
+                            onClick = {
+                                val value = Routes.OppenheimerScreen.withArgs(4)
+                                navController.navigate(value)
+                            }
+                        )
+
+                        seat(id = 4)
+                    }
                     Spacer(modifier = Modifier.width(16.dp))
-                    Image(
-                        painter = painterResource(id = R.drawable.immacule),
-                        contentDescription = "Immacule"
-                    )
+                    Column (
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ){
+                        ImageWithNavigation(
+                            imageId = R.drawable.immacule,
+                            contentDescription = "Immacule",
+                            onClick = {
+                                val value = Routes.OppenheimerScreen.withArgs(5)
+                                navController.navigate(value)
+                            }
+                        )
+
+                        seat(id = 5)
+                    }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 Row {
-                    ImageWithNavigation(
-                        imageId = R.drawable.migration,
-                        contentDescription = "Migration",
-                        onClick = {
-                            navController.navigate(Routes.OppenheimerScreen.route)
-                        }
-                    )
+                    Column (
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ){
+                        ImageWithNavigation(
+                            imageId = R.drawable.migration,
+                            contentDescription = "Migration",
+                            onClick = {
+                                val value = Routes.OppenheimerScreen.withArgs(6)
+                                navController.navigate(value)
+                            }
+                        )
+
+                        seat(id = 6)
+                    }
                     Spacer(modifier = Modifier.width(16.dp))
-                    Image(
-                        painter = painterResource(id = R.drawable.maisonderetraite2),
-                        contentDescription = "Maison de Retraite 2"
-                    )
+                    Column (
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ){
+                        ImageWithNavigation(
+                            imageId = R.drawable.maisonderetraite2,
+                            contentDescription = "Maison de retraite",
+                            onClick = {
+                                val value = Routes.OppenheimerScreen.withArgs(7)
+                                navController.navigate(value)
+                            }
+                        )
+
+                        seat(id = 7)
+                    }
                     Spacer(modifier = Modifier.width(16.dp))
-                    Image(
-                        painter = painterResource(id = R.drawable.wonka),
-                        contentDescription = "Wonka"
-                    )
+                    Column (
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ){
+                        ImageWithNavigation(
+                            imageId = R.drawable.wonka,
+                            contentDescription = "Wonka",
+                            onClick = {
+                                val value = Routes.OppenheimerScreen.withArgs(8)
+                                navController.navigate(value)
+                            }
+                        )
+
+                        seat(id = 8)
+                    }
                 }
             }
         }
     }
 
+
+@Composable
+fun seat(id : Int)
+{
+    if(listMovie[id].seatsSelected != 0){
+        Box(modifier = Modifier.background(Color.White))
+        {
+            Text(text = "Seat Selected = " + listMovie[id].seatsSelected,
+                fontSize= 12.sp,
+                color = Color.Black,
+            )
+        }
+
+    }
+    else{
+        Box (modifier = Modifier.background(Color.Cyan)){
+            Text(text = "Seat Remaining = " + listMovie[id].seatsRemaining,
+                fontSize= 12.sp,
+                color = Color.Black
+            )
+        }
+    }
+}
 
 @Composable
 fun ImageWithNavigation(

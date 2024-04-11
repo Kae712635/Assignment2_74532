@@ -35,11 +35,23 @@ package com.stu74532.assignment2_74532
     import androidx.compose.ui.unit.dp
     import androidx.compose.ui.unit.sp
     import androidx.navigation.NavController
+    import coil.compose.rememberImagePainter
 
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun OppenheimerScreen(navController: NavController?, movie: Int) {
+        val Tempo = listMovie[movie]
+        var im = R.drawable.oppenheimer2
+        if (movie == 1) im = R.drawable.madameweb
+        else if (movie == 2) im = R.drawable.le_dernier_jaguar
+        else if (movie == 3) im = R.drawable.dune
+        else if (movie == 4) im = R.drawable.karaoke
+        else if (movie == 5) im = R.drawable.immacule
+        else if (movie == 6) im = R.drawable.migration
+        else if (movie == 7) im = R.drawable.maisonderetraite2
+        else if (movie == 8) im = R.drawable.wonka
+
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -70,9 +82,7 @@ package com.stu74532.assignment2_74532
                     ) {
                         IconButton(
                             onClick = {
-                                if (navController != null) {
-                                    navController.navigate(Routes.ScreenHome.route)
-                                }
+                                navController?.navigate(Routes.ScreenHome.route)
                             },
                             modifier = Modifier.size(36.dp)
                         ) {
@@ -116,8 +126,8 @@ package com.stu74532.assignment2_74532
                     horizontalArrangement = Arrangement.Center,
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.oppenheimer2),
-                        contentDescription = "Oppenheimer",
+                        painter = painterResource(id = im),
+                        contentDescription = Tempo.name,
                         modifier = Modifier.size(200.dp)
                     )
                 }
@@ -125,7 +135,7 @@ package com.stu74532.assignment2_74532
                 Row {
                     Text(
                         modifier = Modifier.padding(10.dp),
-                        text = listMovie[movie].name + "  ${listMovie[movie].certification}",
+                        text = Tempo.name + "  ${Tempo.certification}",
                         style = TextStyle(
                             color = Color.White,
                             fontWeight = FontWeight.Bold,
@@ -136,7 +146,7 @@ package com.stu74532.assignment2_74532
                 Row {
                     Text(
                         modifier = Modifier.padding(4.dp),
-                        text = listMovie[movie].description,
+                        text = Tempo.description,
                         style = TextStyle(
                             color = Color.White,
                             fontSize = 12.sp
@@ -146,24 +156,24 @@ package com.stu74532.assignment2_74532
                 Row {
                     Text(
                         modifier = Modifier.padding(4.dp),
-                        text = "Genre: Drama, History, Biopic, Thriller, Biography\n" +
-                                "Running time: ${listMovie[movie].runningTimeMins} mins\n" +
-                                "Starring: ${listMovie[movie].starring.joinToString(", ")}",
+                        text =  "Running time: ${Tempo.runningTimeMins} mins\n" +
+                                "Starring: ${Tempo.starring.joinToString(", ")}",
                         style = TextStyle(
                             color = Color.White,
                             fontSize = 10.sp
                         )
                     )
+
                 }
                 Spacer(modifier = Modifier.height(16.dp))
 
-                val select = remember{ mutableIntStateOf(listMovie[movie].seatsSelected) }
+                val select = remember{ mutableIntStateOf(Tempo.seatsSelected) }
 
-                Text(text = "Seats Remaining: ${listMovie[movie].seatsRemaining}",
+                Text(text = "Seats Remaining: ${Tempo.seatsRemaining}",
                     style = TextStyle(
                         color = Color.White,
                         fontSize = 14.sp))
-                Text(text = "Seats Selected: ${select.value}",
+                Text(text = "Seats Selected: ${select.intValue}",
                         style = TextStyle(
                         color = Color.White,
                         fontSize = 14.sp))
@@ -174,16 +184,16 @@ package com.stu74532.assignment2_74532
                 ) {
                     IconButton(
                         onClick = {
-                            if (listMovie[movie].seatsSelected > 0) {
-                                decrementSeatsSelected(listMovie[movie])
-                                select.value = listMovie[movie].seatsSelected
+                            if (Tempo.seatsSelected > 0) {
+                                decrementSeatsSelected(Tempo)
+                                select.intValue = Tempo.seatsSelected
                             }
                         },
-                        enabled = listMovie[movie].seatsSelected > 0,
+                        enabled = Tempo.seatsSelected > 0,
                         modifier = Modifier.size(48.dp),
                     ) {
                         Image(
-                            painter = painterResource(if (listMovie[movie].seatsSelected > 0) R.drawable.moinsactif else R.drawable.moinsinactif),
+                            painter = painterResource(if (Tempo.seatsSelected > 0) R.drawable.moinsactif else R.drawable.moinsinactif),
                             contentDescription = "Remove Seat",
                             modifier = Modifier.size(20.dp)
                         )
@@ -193,16 +203,16 @@ package com.stu74532.assignment2_74532
 
                     IconButton(
                         onClick = {
-                            if (listMovie[movie].seatsRemaining > 0) {
-                                incrementSeatsSelected(listMovie[movie])
-                                select.value = listMovie[movie].seatsSelected
+                            if (Tempo.seatsRemaining > 0) {
+                                incrementSeatsSelected(Tempo)
+                                select.intValue = Tempo.seatsSelected
                             }
                         },
-                        enabled = listMovie[movie].seatsRemaining > 0,
+                        enabled = Tempo.seatsRemaining > 0,
                         modifier = Modifier.size(48.dp),
                     ) {
                         Image(
-                            painter = painterResource(if (listMovie[movie].seatsRemaining > 0) R.drawable.plusactif
+                            painter = painterResource(if (Tempo.seatsRemaining > 0) R.drawable.plusactif
                             else R.drawable.plusinactif),
                             contentDescription = "Add Seat",
                             modifier = Modifier.size(20.dp)

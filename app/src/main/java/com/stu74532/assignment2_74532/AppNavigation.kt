@@ -22,13 +22,13 @@ fun AppNavigation() {
         composable(
             route = Routes.OppenheimerScreen.route + "/{movie}",
             arguments = listOf(
-                navArgument("movieId") {
+                navArgument("movie") {
                     defaultValue = 0
                     type = NavType.IntType
                 }
             )
         ) {
-            val movieId = it.arguments?.getInt("movieId")
+            val movieId = it.arguments?.getInt("movie")
             OppenheimerScreen(navController = navController, movie = movieId!!)
         }
     }

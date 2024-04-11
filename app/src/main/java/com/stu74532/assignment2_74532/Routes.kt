@@ -4,7 +4,7 @@ sealed class Routes(val route: String) {
     object ScreenHome : Routes("screen_home")
     object OppenheimerScreen : Routes("oppenheimer_screen")
 
-    fun withArgs(vararg args : String): String {
+    fun withArgs(vararg args: Int): String {
         return buildString {
             append(route)
             args.forEach { args ->
